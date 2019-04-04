@@ -65,7 +65,7 @@
 
 @keyframes textflash{
     0% {color: white;}
-    25% {color: black;}
+    25% {color: black;} 
     50% {color: white;}
     75% {color: black;}
     100% {color: white;}

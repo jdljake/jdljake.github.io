@@ -1,0 +1,30 @@
+.body{
+    background-color: bisque;
+}
+
+.structure{
+/*	background-color: blue;*/
+	padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.content{
+	background-color: #ffd18c;
+	padding: 300px;
+	float: left;
+	font-family: Helvetica;
+	font-weight: bold;
+    justify-content: center;
+    display: flex;
+}
+
+.hey{
+	font-family: Helvetica;
+	font-weight: bold;
+    font-size: 100px;
+    justify-content: center;
+    position: absolute;
+    padding-top: 100px;
+}
