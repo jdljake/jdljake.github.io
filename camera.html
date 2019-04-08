@@ -66,17 +66,7 @@
 //}
 			var video = document.querySelector("#videoElement");
 			var element = document.getElementById('purplebox');
-			i = 0;
-			
-            if (navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true })
-                    .then(function (stream) {
-                    video.srcObject = stream;
-                })
-                    .catch(function (err0r) {
-                    console.log("Something went wrong!");
-                });
-            }
+
 			document.documentElement.addEventListener('keydown', function (e) {
 				if ( ( e.keycode || e.which ) == 32) {
 					e.preventDefault();
@@ -104,6 +94,21 @@
 						}, 0700);
 					}
 				}
+				
+				if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                    .catch(function (err0r) {
+                    console.log("Something went wrong!");
+                });
+            	}
+			
+			
+			
+			
+				
 				
 		</script>
 	</body>
