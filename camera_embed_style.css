@@ -28,3 +28,29 @@
     position: absolute;
     padding-top: 100px;
 }
+
+.purplebox{
+    background-color: purple;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: -50px;
+    top: -50px;
+    padding: 100%;
+	display: block;
+}
+
+.fadeout{
+	transition-property: opacity;
+	transition-duration: 0.7s;
+	opacity: 0;
+}
+
+.fadein{
+	transition-property: opacity;
+	transition-duration: 0.7s;
+	opacity: 1;
+}
+
+
+
