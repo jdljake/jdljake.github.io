@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>hey amigo</title>
+		<link rel="stylesheet" type="text/css" href="heyamigostyle.css">
+	</head>
+	<body class="body">
+		<div class="structure">
+            <div class="content">
+				<div class="blackbox"></div>
+				<p id="output" class="timer">0:00:00:00</p>
+            </div>
+            <div class="hey">I wonder what this is for...</div>
+        </div>
+		
+
+		<script type="text/javascript">
+		
+		var time = 0;
+		var running = 0;
+			
+		function startstop(){
+			if(running == 0){
+				running = 1;
+				increment();
+			}
+			else{
+				running = 0;
+			}
+		}
+		
+		function reset(){
+			running = 0;
+			time = 0
+			document.getElementById("output").innerHTML = "0:00:00:00";
+		}
+			
+		function increment(){
+			if(running == 1){
+				setTimeout(function(){
+					time++;
+					var mins = Math.floor(time/10/60);
+					var secs = Math.floor(time/10 % 60);
+					var hours = Math.floor(time/10/60/60);
+					var tenths = time % 10;
+					if(mins < 10){
+						mins = "0" + mins;
+					}
+					if(secs < 10){
+						secs = "0" + secs;
+					}
+					document.getElementById("output").innerHTML = hours + ":" + mins + ":" + secs + ":" + tenths + "0";
+					increment();
+				},100)
+			}
+		}
+			
+			increment();
+			
+		document.body.onkeydown = function(e){
+			if(e.keyCode == 38){
+				startstop();
+			}
+			
+			if(e.keyCode == 40){
+				reset();
+				document.getElementById("output").innerHTML = "0:00:00:00";
+			}
+		}
+		
+		document.body.onkeyup = function(f){
+			if(f.keyCode == 40){
+				reset();
+				document.getElementById("output").innerHTML = "0:00:00:00";
+			}
+		}
+		
+		
+			
+		</script>
+	</body>
+</html>
