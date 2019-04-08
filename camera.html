@@ -70,6 +70,7 @@
 			var video = document.querySelector("#videoElement");
 			var element = document.getElementById('purplebox');
 			i = 0;
+			
             if (navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ video: true })
                     .then(function (stream) {
@@ -85,26 +86,31 @@
 				}
 			}, false);
 			
-				document.body.onkeyup = function(e){
-					if(e.keyCode == 32 & i % 2 == 0){			
-						i += 1;
+//				document.body.onkeyup = function(e){
+//					if(e.keyCode == 32){			
+//						
+//						element.classList.remove('fadeout');
+//					}
+//				}		
+//				
+//				document.body.onkeydown = function(e){
+//					if(e.keyCode == 32){			
+//						element.classList.add('fadeout');
+//					}
+//				}
+			
+				document.body.onkeydown = function(e){
+					if(e.keyCode == 32){			
 						element.classList.add('fadeout');
-						alert(i);
+						setTimeout(function(){
+							element.classList.remove('fadeout');
+						}, 0700);
 					}
-					else if (e.keyCode == 32){			
-						i += 1;
-						element.classList.add('fadein');
-						alert(i);
-					}
-				}		
+				}
+			
+			
 				
-				alert(2 % 6);
-			
-			
-			
-			
-//			firstdogs();
-		
+
 		</script>
 	</body>
 </html>

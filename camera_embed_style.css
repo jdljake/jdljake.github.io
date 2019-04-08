@@ -30,7 +30,7 @@
 }
 
 .purplebox{
-    background-color: purple;
+    background-color: transparent;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -40,11 +40,27 @@
 	display: block;
 }
 
+/*
 .fadeout{
 	transition-property: opacity;
 	transition-duration: 0.7s;
 	opacity: 0;
 }
+*/
+
+.fadeout{
+	animation: fader;
+	animation-duration: 0.7s;
+	animation-iteration-count: 1;
+}
+
+@keyframes fader{
+	0% {background-color: transparent}
+	50% {background-color: purple}
+	100 {background-color: transparent}
+}
+
+
 
 .fadein{
 	transition-property: opacity;
