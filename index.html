@@ -10,11 +10,11 @@
             <div class="flashy">
                 <div class="flashytext" onclick="window.location.href = 'https://jdljake.github.io/heyamigo.html';">hey amigo</div>
 				<div class="ziplink">
-				<a class="ziplinktext" href="/crescent.zip">wow look you found a secret</a>
+				<a id="secretdownloadlink" class="ziplinktext" href="/crescent.zip">wow look you found a secret</a>
 				</div>
             </div>
             </div>
-            <div class="hey">hello fellow traveller</div>    
+            <div id="hey" class="hey">hello fellow traveller</div>    
         </div>
 		
 		<div class="structure">
@@ -27,7 +27,12 @@
 
 		<script type="text/javascript">
 			
-
+		helloft = document.getElementById("hey");
+		downloadlink = document.getElementById("secretdownloadlink");
+		helloft.ondblclick = showsecretdownloadlink;
+		function showsecretdownloadlink(){
+			downloadlink.style.opacity = 1;
+		}
 
 		</script>
 	</body>
