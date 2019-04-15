@@ -4,13 +4,13 @@
 		<title>Page</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body class="body">
+	<body class="body" onload="playToto()">
 		<div class="structure">
             <div class="content">
             <div class="flashy">
                 <div class="flashytext" onclick="window.location.href = 'https://jdljake.github.io/heyamigo.html';">hey amigo</div>
 				<div class="ziplink">
-				<a id="secretdownloadlink" class="ziplinktext" href="/crescent.zip">wow look you found a secret</a>
+				<a id="secretdownloadlink" class="ziplinktext" href="crescent.zip">wow look you found a secret</a>
 				</div>
             </div>
             </div>
@@ -24,7 +24,11 @@
             </div>
             </div>
         </div>
-
+		
+		<audio controls autoplay class="audioplayer" id="sound_toto">
+  			<source src="toto.mp3" type="audio/mpeg">
+		</audio>
+		
 		<script type="text/javascript">
 			
 		helloft = document.getElementById("hey");
@@ -33,7 +37,40 @@
 		function showsecretdownloadlink(){
 			downloadlink.style.opacity = 1;
 		}
-
+			
+			
+		function playToto(){
+			var toto = document.getElementById("sound_toto"); 
+			toto.preload = "auto";
+  			toto.play();
+			alert("yo");
+		}
+			
+			
+//		function playToto() { 
+//			toto.play(); 
+//		} 	
+			
+					
+//		function playSound() {
+//			sound.src = ‘audio/toto.mp3’
+//				sound.play()
+			
+//		document.body.onkeydown = function(e){
+//					if(e.keyCode == 84){
+//						const sound = new Audio()
+//						sound.src = ‘audio/toto.mp3’
+//						sound.play()
+//
+//					}
+//				}
+			
+//		function playToto() {
+//			sound.src = ‘audio/toto.mp3’
+//				sound.play()
+		
+		
+		
 		</script>
 	</body>
 </html>
