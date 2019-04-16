@@ -4,7 +4,7 @@
 		<title>Page</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body class="body" onload="playToto()">
+	<body class="body">
 		<div class="structure">
             <div class="content">
             <div class="flashy">
@@ -28,56 +28,79 @@
 		<audio autoplay class="audioplayer" id="sound_toto">
   			<source src="toto.mp3" type="audio/mpeg">
 		</audio>
-		
+		<script type="text/javascript" src="konami.js"></script>
 		<script type="text/javascript">
-			
+
+//begin secretdownloadlink code            
 		helloft = document.getElementById("hey");
 		downloadlink = document.getElementById("secretdownloadlink");
 		helloft.ondblclick = showsecretdownloadlink;
 		function showsecretdownloadlink(){
 			downloadlink.style.opacity = 1;
 		}
-			
-			
-		function playToto(){
-			playing = 0;
-			var toto = document.getElementById("sound_toto"); 
-			toto.preload = "auto";
-  			toto.loop = true;
-			toto.play();
-			document.body.onkeydown = function(a){
-					if(a.keyCode == 84 && playing == 0){
-							playing = 1;
-							toto.play();	
-					}
-			}	
-		}
-		
-			
-//		function playToto() { 
-//			toto.play(); 
-//		} 	
-			
-					
-//		function playSound() {
-//			sound.src = ‘audio/toto.mp3’
-//				sound.play()
-			
-//		document.body.onkeydown = function(e){
-//					if(e.keyCode == 84){
-//						const sound = new Audio()
-//						sound.src = ‘audio/toto.mp3’
-//						sound.play()
-//
-//					}
-//				}
-			
-//		function playToto() {
-//			sound.src = ‘audio/toto.mp3’
-//				sound.play()
-		
-		
-		
+//end secretdownloadlink code
+
+//begin konami_code code
+        var i = 0;
+//        alert("start");
+        
+        var konami = [
+            "38", //up
+            "38", //up
+            "40", //down
+            "40", //down
+            "37", //left
+            "39", //right
+            "37", //left
+            "39", //right
+            "66", //b
+            "65", //a
+            "13"  //start
+        ];
+        
+        document.body.onkeydown = function(g) {
+            var konamicorrect = parseInt(konami[i]);
+            // alert(konamicorrect);
+            // alert(g.keyCode);
+            if (g.keyCode == konamicorrect){
+                i += 1;
+                // alert("correct = " + konamicorrect + ". yours = " + g.keyCode + ". i = " + i);
+                // alert("konami");
+//                document.getElementById("statusvalue").innerHTML = "Good";
+//                document.getElementById("hey").innerHTML = "correct = " + konamicorrect + ". yours = " + g.keyCode + ". i = " + i;
+//                document.getElementById("i").innerHTML = "i = " + i;
+                
+            } else if (g.keyCode != konamicorrect){
+                i = 0;
+                // alert("not konami. " + "correct = " + konamicorrect + ". incorrect (yours) = " + g.keyCode + ". i = " + i);
+//                document.getElementById("statusvalue").innerHTML = "Bad";
+//                document.getElementById("hey").innerHTML = "not konami. " + "correct = " + konamicorrect + ". incorrect (yours) = " + g.keyCode + ". i = " + i;
+//                document.getElementById("i").innerHTML = i;
+            } if (i == 11){
+                alert("konami");
+                window.location.href = 'https://jdljake.github.io/camera.html'
+            }
+            
+            if(g.keyCode == 84 && playing == 0){
+                playthetoto();
+            }
+        }
+//end konami_code code
+
+//begin main toto music code	
+        var toto = document.getElementById("sound_toto"); 
+        playing = 0;
+        toto.play();
+            
+        function playthetoto(){
+            playing = 1;
+            toto.preload = "auto";
+            toto.loop = true;
+            toto.play();
+        }
+//end main toto music code
+        
+            
 		</script>
 	</body>
 </html>
