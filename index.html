@@ -9,7 +9,11 @@
 </head>
 <body>
     <div id="custom-cursor"></div>
-
+    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>Jacob Lindland Portfolio</h3>
@@ -17,7 +21,7 @@
         <ul>
             <li><a href="#welcome" class="sidebar-link">🏠 Home</a></li>
             <li><a href="#experience" class="sidebar-link">💼 Experience</a></li>
-            <li><a href="#experience" class="sidebar-link">👥 Involvement</a></li>
+            <li><a href="#involvement" class="sidebar-link">👥 Involvement</a></li>
             <li><a href="#projects" class="sidebar-link">💡 Projects</a></li>
             <li><a href="#resume" class="sidebar-link">📄 Resume</a></li>
             <li><a href="#contact" class="sidebar-link">📞 Contact</a></li>
@@ -34,7 +38,8 @@
 
     <main>
         <section id="welcome">
-            <img src="img/jacob-pfp.jpg" style="max-width:100%; height:55vh; margin-bottom:5px; border-radius: 8px;">
+            <!-- <img src="img/jacob-pfp.jpg" style="max-width:100%; height:55vh; margin-bottom:5px; border-radius: 8px;"> -->
+            <img src="img/jacob-pfp.jpg">
             <h1>Hey! I'm Jacob.</h1>
             <p>I'm an engineer who is passionate about communication and human design in technical and practical contexts.</p>
         </section>
@@ -125,9 +130,20 @@
             const sections = document.querySelectorAll('main section[id]');
             const sidebarLinks = document.querySelectorAll('.sidebar-link');
             const sidebar = document.getElementById('sidebar');
+            const hamburgerMenu = document.getElementById('hamburgerMenu'); // Get hamburger button
+
+            // --- Hamburger Menu Toggle Logic (Added Back) ---
+            if (hamburgerMenu && sidebar) {
+                 hamburgerMenu.addEventListener('click', () => {
+                      sidebar.classList.toggle('open');
+                      hamburgerMenu.classList.toggle('icon-active');
+                      // No need to toggle body class for overlay menu
+                 });
+            }
+            // --- End of Added Hamburger Logic ---
 
             if (!sections.length || !sidebarLinks.length || !sidebar) {
-                return;
+                 return;
             }
             
             const removeActiveClasses = () => {
@@ -144,6 +160,7 @@
             };
 
             const scrollSpy = () => {
+                // ... (ScrollSpy logic remains the same) ...
                 let currentSectionId = '';
                 const offset = window.innerHeight / 3;
                 const scrollPosition = window.scrollY;
@@ -180,6 +197,12 @@
 
             sidebarLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
+                    // --- Close Sidebar on Link Click (Mobile) ---
+                    if (sidebar.classList.contains('open')) {
+                         sidebar.classList.remove('open');
+                         hamburgerMenu.classList.remove('icon-active');
+                    }
+                    // --- End Close Sidebar Logic ---
                     setTimeout(scrollSpy, 150); 
                 });
             });
@@ -187,7 +210,8 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const cursor = document.getElementById('custom-cursor');
+            // ... (custom cursor script remains the same) ...
+             const cursor = document.getElementById('custom-cursor');
             const enlargeTriggerElements = document.querySelectorAll(
                 'a, button, input[type="submit"], .project-link, .resume-button, .sidebar-link'
             );
@@ -222,8 +246,9 @@
                 });
             });
             
-            document.body.style.cursor = 'none';
-            enlargeTriggerElements.forEach(el => el.style.cursor = 'none');
+            // Hide system cursor (only effective if CSS rule is commented out)
+            // document.body.style.cursor = 'none';
+            // enlargeTriggerElements.forEach(el => el.style.cursor = 'none');
         });
     </script>
 </body>

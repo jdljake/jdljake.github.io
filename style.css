@@ -31,6 +31,48 @@ body {
     cursor: none !important;
 }
 
+.hamburger-menu {
+    display: none; /* Hidden on desktop */
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    cursor: none !important; /* Hide default, use custom */
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    /* display: flex; - remove from default, add in mobile */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: transform 0.2s ease-in-out; /* Removed 'left' transition */
+}
+
+/* Style the hamburger spans (mostly unchanged, but ensure they are styled even if button is hidden initially) */
+.hamburger-menu span {
+    display: block;
+    width: 28px;
+    height: 5px;
+    background-color: var(--primary-color);
+    margin: 2.5px 0;
+    transition: all 0.3s ease-in-out, background-color 0.3s ease;
+    border-radius: 3px;
+}
+.hamburger-menu.icon-active span {
+    background-color: var(--background-color);
+}
+.hamburger-menu:hover {
+    transform: scale(1.1);
+}
+
+/* Custom cursor should still be hidden over the hamburger */
+.hamburger-menu {
+    cursor: none !important;
+}
+
 .sidebar {
     height: 100%;
     width: var(--sidebar-width);
@@ -44,6 +86,8 @@ body {
     display: flex;
     flex-direction: column;
     padding: 0;
+    transform: translateX(0); /* Sidebar visible by default */
+    transition: none; /* No transition needed when always open */
 }
 
 .sidebar-header {
@@ -146,6 +190,13 @@ main section:last-of-type {
     border-bottom: none;
 }
 
+main section#welcome img {
+    max-width:100%; 
+    height:55vh; 
+    margin-bottom:5px; 
+    border-radius: 8px;
+}
+
 .experience-item, .project-item {
     margin-bottom: 30px;
     padding: 20px;
@@ -223,7 +274,8 @@ a, button, input[type="submit"], .project-link, .resume-button, .sidebar-link, .
 }
 
 a {
-    color: var(--secondary-color);
+    /* color: var(--secondary-color); */
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -289,4 +341,104 @@ footer p {
 
 #custom-cursor.cursor-inverted {
     background-color: var(--background-color);
+}
+
+
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 992px) {
+
+    .sidebar-header {
+        display: none; /* Hide the header container on mobile */
+    }
+
+    .hamburger-menu {
+        display: flex; /* Show hamburger on mobile */
+    }
+
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar off-screen by default on mobile */
+        transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); /* Add transition back for mobile slide */
+        /* Optional: Adjust sidebar width for smaller screens */
+        /* width: 240px; */
+        /* z-index needs to be high enough to overlay content */
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        transform: translateX(0); /* Show sidebar when .open class is added */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Optional: add shadow when overlaying */
+    }
+
+    main {
+        margin-left: 0; /* Remove sidebar offset on mobile */
+        padding: 15px; /* Adjust padding for smaller screens */
+         /* transition: margin-left 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); Remove transition */
+    }
+
+    main section#welcome img{
+        display: block;     /* Allows use of auto margins for centering */
+         margin-left: auto;  /* Center the image horizontally */
+         margin-right: auto; /* Center the image horizontally */
+         width: 75%;        /* Set width relative to its container */
+         max-width: 280px;  /* Set a maximum pixel width */
+         height: auto;       /* CRUCIAL: Let height adjust automatically */
+         /* max-height: 50vh; Optional: If you still want to limit height by viewport */
+         margin-bottom: 20px; /* Space below the image */
+         border-radius: 8px; /* Keep the rounded corners */
+         object-fit: cover;  /* Ensures the image covers the area nicely if aspect ratio conflicts arise (less likely with height:auto) */
+    }
+
+    footer {
+        margin-left: 0; /* Remove sidebar offset on mobile */
+        padding: 20px 15px; /* Adjust padding */
+    }
+
+    /* Optional: Disable custom cursor on smaller screens / touch devices */
+    #custom-cursor {
+        display: none;
+    }
+    body, a, button, input[type="submit"], .project-link, .resume-button, .sidebar-link, .sidebar-social-icons a i {
+         cursor: default !important; /* Restore default cursor behavior */
+    }
+
+    /* Optional: Adjust very large font sizes for mobile */
+    h1 {
+        font-size: 2.2em; /* Was 4em */
+    }
+    h2 {
+         font-size: 1.8em; /* Was 2.2em */
+    }
+    h3 {
+         font-size: 1.4em; /* Was 1.6em */
+    }
+    .sidebar-header h3 {
+         font-size: 1.1em; /* Was 1.2em */
+    }
+    .sidebar ul li a.sidebar-link {
+        font-size: 1.1em; /* Was 1.2em */
+    }
+
+    /* Adjust welcome image height for mobile */
+    main section#welcome img {
+         height: auto; /* Let aspect ratio decide */
+         max-height: 40vh; /* Set a max viewport height */
+         width: 80%; /* Make it less wide */
+         max-width: 300px; /* Set a max pixel width */
+    }
+
+    /* Adjust experience item logo size for mobile */
+    .company-logo-rhs {
+        width: 80px; /* Was 120px */
+        max-height: 50px; /* Add max-height back for mobile */
+    }
+
+    .experience-item {
+         /* Optional: stack text and logo vertically on very small screens if needed */
+         flex-direction: column;
+         align-items: center;
+    }
+    .experience-text-content {
+        padding-right: 0; /* If stacking vertically */
+        margin-bottom: 15px; /* If stacking vertically */
+    }
 }
