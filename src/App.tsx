@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, type Variants, AnimatePresence } from 'framer-motion';
 import { 
   Github, Linkedin, Mail, 
-  Cpu, Zap, Trophy, Globe, Code2, Terminal,
+  Zap, Trophy, Terminal,
   Music, Pizza, Palette, GraduationCap,
   Languages, Fish, X, Monitor, FileText, ArrowUpRight // Removed ArrowRight, Kept ArrowUpRight
 } from 'lucide-react';
