@@ -2,7 +2,7 @@
   "name": "modern_portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://jdljake.github.io/jdljake.github.io",
+  "homepage": "https://jdljake.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
